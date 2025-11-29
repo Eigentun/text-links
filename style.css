@@ -65,3 +65,7 @@ body {
 .add-filter:active {
   background-color: rgb(0, 209, 209);
 }
+
+.marked {
+  background-color: cyan;
+}

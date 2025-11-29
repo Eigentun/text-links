@@ -1,9 +1,10 @@
 let addButton = document.querySelector(".add-textbox");
 let scrollContainer = document.querySelector(".scrollcontainer");
 let closeButton;
+let textbox;
 
 addButton.addEventListener("click", () => {
-  let textbox = document.createElement("div");
+  textbox = document.createElement("div");
   textbox.classList.add("textbox");
   scrollContainer.appendChild(textbox);
 
@@ -34,4 +35,17 @@ scrollContainer.addEventListener("click", (e) => {
     let parentTextContainer = e.target.parentElement;
     parentTextContainer.remove();
   }
+});
+
+let filterButton = document.querySelector(".add-filter");
+
+filterButton.addEventListener("click", () => {
+  // console.log(document.getSelection().getRangeAt(0).getBoundingClientRect());
+  let selection = document.getSelection().getRangeAt(0);
+  let selectedText = selection.extractContents();
+  let markedText = document.createElement("span");
+
+  markedText.classList.add("marked");
+  markedText.appendChild(selectedText);
+  selection.insertNode(markedText);
 });
